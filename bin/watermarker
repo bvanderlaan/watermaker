@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+const cli = require('commander');
+const pjson = require('../package.json');
+const watermark = require('../lib/watermarker');
+
+let inputFile;
+
+cli
+  .alias('wm')
+  .version(pjson.version)
+  .description(pjson.description)
+  .usage('[options] <file ...>')
+  .arguments('<file>')
+  .action((file) => {
+    inputFile = file;
+  })
+  .option('-t, --text <watermark>', 'The text to put over the image.')
+  .option('-o, --outdir [path]', 'Path to save watermarked images to.')
+  .option('-c, --colour [rgba]',
+          'Colour to use for watermark text. Defaults to semi-transparent black',
+          'rgba(0,0,0,0.5)')
+  .option('-s, --font-size [point]', 'The font size to use in Points.', 12 )
+  .option('-p, --position [position]', `Location on the image to place the watermark.
+          TopLeft, Top, TopRight, Left, Center, Right, BottomLeft, Bottom, BottomRight`, 'BottomRight')
+  .option('-r, --rotation [degree]', 'Angle to write the watermark text at. Defaults to 0', '0')
+  .parse(process.argv)
+
+return watermark.addWaterMark(inputFile, cli.text, cli)
+  .then((result) => {
+    console.log('All done! ', result);
+  })
+  .catch((err) => {
+    console.error(`ERROR: ${err.message}`);
+  });
