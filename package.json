@@ -1,0 +1,38 @@
+{
+  "name": "cli-watermarker",
+  "version": "0.1.0",
+  "description": "CLI tool for inserting a watermark on images",
+  "bin": {
+    "watermarker": "./bin/watermark",
+    "wm": "./bin/watermark"
+  },
+  "scripts": {
+    "test": "mocha --recursive ./tests"
+  },
+  "keywords": [
+    "watermark",
+    "image",
+    "cli"
+  ],
+  "author": "Brad van der Laan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bvanderlaan/watermarker.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "commander": "^2.9.0",
+    "imagemagick": "^0.1.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.2.0",
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0"
+  }
+}
