@@ -1,10 +1,10 @@
 {
   "name": "cli-watermarker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI tool for inserting a watermark on images",
   "bin": {
-    "watermarker": "./bin/watermark",
-    "wm": "./bin/watermark"
+    "watermarker": "./bin/watermarker",
+    "wm": "./bin/watermarker"
   },
   "scripts": {
     "test": "mocha --recursive ./tests"
